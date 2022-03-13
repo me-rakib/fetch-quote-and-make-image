@@ -1,1 +1,1 @@
-# fetch-quote-and-make-image
+Fetch quote and make image
