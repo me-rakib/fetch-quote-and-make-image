@@ -1,27 +1,27 @@
 from PIL import Image, ImageDraw, ImageFont
 
-def get_quote_pic(quote):
+def make_pic_with_text(quote_text):
     # variable for image size
     height = 612
     width = 612
 
-    img = Image.new('RGB', (height, width), color=(21, 23, 24))
+    img = Image.new('RGB', (height, width), color=(21, 23, 24))  # background 
     d = ImageDraw.Draw(img)
 
     # font
     fnt = ImageFont.truetype('./Ubuntu-Regular.ttf', 20)
     sum = 0
-    for letter in quote:
+    for letter in quote_text:
         sum += d.textsize(letter, font=fnt)[0]
 
-    avg_length_of_letter = sum / len(quote)
+    avg_length_of_letter = sum / len(quote_text)
 
     num_of_letter_for_each_line = (height/1.618) / avg_length_of_letter
     increment = 0
     fresh_sentence = ""
 
     # add some line break
-    for letter in quote:
+    for letter in quote_text:
         if letter == "-":
             fresh_sentence += '\n\n' + letter
         elif increment < num_of_letter_for_each_line:
@@ -47,4 +47,7 @@ def get_quote_pic(quote):
     # 220, 220, 170   223, 213, 137 
 
     # save image in current directory
-    img.save(f'quote.png')
+    img.save('quote.png')
+
+
+# code from - https://muthu.co/instagram-quotes-generator-using-python-pil/

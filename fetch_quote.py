@@ -9,7 +9,7 @@ def random_link():
     rand_num = random.randint(1, 157)
     return f"{BASE_LINK}{rand_num}"
     
-def get_quote():
+def get_quote_text():
     response = requests.get(random_link())
     soup = BeautifulSoup(response.text, 'html.parser')
 
